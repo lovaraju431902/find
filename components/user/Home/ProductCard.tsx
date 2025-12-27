@@ -113,7 +113,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="rounded-2xl  bg-white px-5 pb-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-2xl  bg-white px-5 pb-3 shadow-sm ">
       <div className="h-56 w-full relative">
         <a href="#" className="block w-full h-full">
           <Image 
