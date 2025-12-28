@@ -39,7 +39,7 @@ const ArrivalProducts = () => {
       });
     };
   return (
-    <div className="bg-linear-to-r from-slate-100 to-purple-200  h-auto ">
+    <div className="bg-linear-to-r from-slate-100 to-purple-200   ">
 
         <div className="pt-10 space-y-5">
      <h1 className="text-center font-bold text-2xl">New Arrival Products</h1>
@@ -120,7 +120,10 @@ const ArrivalProducts = () => {
         </div>
       </div>
     </section>
- 
+      
+      <div className='flex justify-center pb-10'>
+      <Button variant="outline" size="lg" className='bg-linear-to-r to-violet-500 from-fuchsia-500 text-white rounded-3xl'>View All Products</Button>
+      </div>
 
 
 

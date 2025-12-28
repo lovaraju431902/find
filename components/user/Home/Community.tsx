@@ -55,7 +55,7 @@ const Community = () => {
 
 
  </div>
-  <p className={`text-md  text-[14px]   text-black font-serif`}>Over 10k+ freelancers use codemarket in Africa</p>
+  <p className={`text-[12px]  md:text-[14px]   text-black font-serif`}>Over 10k+ freelancers use codemarket in Africa</p>
   
   </div>
     

@@ -19,6 +19,24 @@ const nextConfig: NextConfig = {
         pathname:"/**"
 
       },
+      {
+        protocol:"https",
+        hostname:"randomuser.me",
+        port:"",
+        pathname:"/**"
+
+      },
+      
+      {
+        protocol:"https",
+        hostname:"i.postimg.cc",
+        port:"",
+        pathname:"/**"
+
+      },
+     
+      
+
     ],
     
   },
