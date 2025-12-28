@@ -39,7 +39,7 @@ const Page = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto dark:bg-white "
             onClick={() => window.history.back()}
           >
             Go Back
