@@ -5,7 +5,7 @@ import { products,Product } from '@/lib/arrivaldemodata';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Heart } from 'lucide-react';
-
+import { motion } from "framer-motion";
 import { Oswald, Roboto_Mono } from 'next/font/google'
 import { ProductCard } from './ProductCard';
 
@@ -39,7 +39,15 @@ const ArrivalProducts = () => {
       });
     };
   return (
-    <div className="bg-linear-to-r from-slate-100 to-purple-200   ">
+    <motion.div 
+    className="bg-linear-to-r from-slate-100 to-purple-200"            
+    initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+    
+    
+  
 
         <div className="pt-10 space-y-5">
      <h1 className="text-center font-bold text-2xl">New Arrival Products</h1>
@@ -133,7 +141,7 @@ const ArrivalProducts = () => {
 
 
         </div>
-    </div>
+    </motion.div>
   )
 }
 

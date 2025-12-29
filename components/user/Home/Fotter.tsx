@@ -12,7 +12,7 @@ import {
   import Link from 'next/link';
   import Image from 'next/image';
 import React from 'react';
-  
+import { motion } from "framer-motion";
   interface Data {
     facebookLink: string;
     instaLink: string;
@@ -138,7 +138,17 @@ import React from 'react';
   
   export default function Footer(): React.JSX.Element {
     return (
-      <footer className="bg-linear-to-r from-slate-100 to-purple-200  w-full place-self-end ">
+      <motion.div 
+      className="bg-linear-to-r from-slate-100 to-purple-200  w-full place-self-end "
+       
+       
+    initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+      
+     
+       
         <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
@@ -275,6 +285,6 @@ import React from 'react';
             </div>
           </div>
         </div>
-      </footer>
+      </motion.div>
     );
   }

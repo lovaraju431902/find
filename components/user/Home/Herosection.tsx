@@ -318,7 +318,20 @@ const Herosection = () => {
 
   return (
     <>
-      <div className="grid overflow-hidden md:grid-cols-2 pt-20 bg-linear-to-r from-slate-100 to-purple-200 no-scrollbar relative z-0"> {/* Added relative z-0 */}
+        <motion.div 
+           className="grid overflow-hidden md:grid-cols-2 pt-20 bg-linear-to-r from-slate-100 to-purple-200 no-scrollbar relative z-0"
+        
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+
+
+ 
+      
+      
+      
+     
         <div className="p-5 mt-10 space-y-10 relative z-10">
           <Community />
           <motion.h1
@@ -339,16 +352,35 @@ const Herosection = () => {
             Explore the best premium themes and plugins available for sale. Our unique collection is hand-curated by experts. Find and buy the perfect premium theme today.
           </motion.p>
 
-          <div className="relative md:text-center xl:text-left">
+          <motion.div
+          
+        className="relative md:text-center xl:text-left"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                       transition={{ duration: 0.8, ease: "easeOut" }}>
+          
+          
+          
+          
             <Search className="absolute top-1/2 right-47 md:top-1/2 md:right-20 lg:right-24 xl:right-63 -translate-y-1/2 w-10 h-10 text-white bg-gradient-to-r from-fuchsia-500 to-indigo-600 p-2 rounded-full" />
             <Input
               placeholder="Search for application source code"
               className="w-[400px] md:w-2/3 text-lg text-slate-400 font-sans border-none shadow-md p-8 bg-white rounded-full pl-6 pr-20"
             />
-          </div>
+          </motion.div>
 
           {/* Infinite Scrolling */}
-          <div className="mt-8 overflow-hidden max-w-xl">
+          <motion.div
+          
+           className="mt-8 overflow-hidden max-w-xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                         transition={{ duration: 0.8, ease: "easeOut" }}>
+          
+          
+          
+          
+         
             <div className="flex animate-scroll whitespace-nowrap">
               {[...icons, ...icons].map((icon, index) => (
                 <div
@@ -359,7 +391,7 @@ const Herosection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Floating Logo 1 */}
           <motion.div
@@ -556,7 +588,7 @@ const Herosection = () => {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -242,8 +242,18 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials(): React.JSX.Element {
   return (
-    <div>
-    <section className="relative  bg-linear-to-r overflow-hidden from-slate-100 to-purple-200 py-10">
+    
+    <motion.div 
+    className="relative  bg-linear-to-r overflow-hidden from-slate-100 to-purple-200 py-10"
+      
+    initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+    
+    
+      
+      
       {/* Decorative elements */}
       <div className="absolute top-20 -left-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
       <div className="absolute -right-20 bottom-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
@@ -300,8 +310,8 @@ export default function Testimonials(): React.JSX.Element {
         <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-20%"></div>
         <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-20%"></div>
       </div>
-    </section>
-    </div>
+    </motion.div>
+    
   );
 }
 
