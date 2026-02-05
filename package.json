@@ -8,10 +8,6 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "npx prisma generate"
-  
-  
-}
-
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.1.1",
