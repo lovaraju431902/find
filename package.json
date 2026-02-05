@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
+  
+  
+}
+
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.1.1",
