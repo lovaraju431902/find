@@ -1,0 +1,49 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+
+enum Status {
+  draft
+  published
+}
+
+
+
+
+model Post {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  subtitle       String?
+  content        String
+  slug           String    @unique
+  authorName     String
+  authorEmail    String
+  authorAvatar   String?
+  featuredImage  String?
+  tags           String[]
+  readTime       Int?
+ 
+  
+  status         Status    @default(draft)
+
+  publishedDate  DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  
+  // @@index([slug])
+  @@index([status])
+ 
+  @@index([publishedDate])
+  @@index([authorEmail])
+  @@map("post")
+}
