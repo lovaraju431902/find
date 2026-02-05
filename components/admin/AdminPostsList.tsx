@@ -32,8 +32,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MoreVertical, Eye, Edit, Trash2, Search } from "lucide-react";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
-import { prismaAdapter } from "better-auth/adapters/prisma";
-import prisma from "@/lib/prisma";
 import {Post} from "@/app/(user)/blog/page";
 
 interface DeleteDialogState {

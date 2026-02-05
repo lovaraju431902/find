@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { format } from "date-fns";
+
 
 interface Post {
   id: string;
@@ -79,7 +79,7 @@ export default function RelatedPosts({
         <div className="grid md:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
             <div key={i} className="space-y-3">
-              <Skeleton className="aspect-[16/10] rounded-lg" />
+              <Skeleton className="aspect-16/10 rounded-lg" />
               <Skeleton className="h-4 w-3/4" />
               <Skeleton className="h-4 w-full" />
               <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export default function RelatedPosts({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-200" />
+                  <div className="w-full h-full bg-linear-to-br from-emerald-100 to-emerald-200" />
                 )}
               </div>
               <h4 className="font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-emerald-600 transition-colors">

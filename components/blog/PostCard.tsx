@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { format } from "date-fns";
-import { Bookmark, MoreHorizontal, Heart, MessageCircle, Eye } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+
 import Image from "next/image";
+import { format } from "date-fns";
+import { Eye, MessageCircle } from "lucide-react";
 
 interface Post {
   id: string;
@@ -136,7 +135,7 @@ export default function PostCard({ post }: PostCardProps) {
         </div>
 
         {post.featured_image && (
-          <Link href={`/blog?slug=${post.slug}`} className=" flex-shrink-0">
+          <Link href={`/blog?slug=${post.slug}`} className=" shrink-0">
             <div className="relative w-28 h-28 sm:w-36 sm:h-28 md:w-40 md:h-28 bg-gray-100 rounded-sm overflow-hidden">
               <Image
                 src={post.featured_image}

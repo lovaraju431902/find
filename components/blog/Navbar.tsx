@@ -9,25 +9,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Search, PenSquare, BookOpen, Menu, Home } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 export default function NavBar(): React.JSX.Element {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const router = useRouter();
+  
 
   // const { data: session } = authClient.useSession();
   // const user = session?.user;

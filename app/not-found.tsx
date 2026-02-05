@@ -1,11 +1,11 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Link from "next/link"
+
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 px-4">
       <div className="max-w-md w-full text-center space-y-8">
         {/* Image Container */}
         <div className="flex justify-center">

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -30,11 +30,7 @@ import {
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-interface User {
-  email: string;
-  full_name?: string;
-  avatar_url?: string;
-}
+
 
 export interface Post {
   id: string;
@@ -58,7 +54,6 @@ export interface Post {
 export default function PostPage({ id }: { id: string }) {
   const router = useRouter();
   
-  const [isFollowing, setIsFollowing] = useState<boolean>(false);
 
   const { data: post, isLoading, isError } = useQuery<Post>({
     queryKey: ["post", id],

@@ -63,7 +63,7 @@ export default function Post(): React.JSX.Element {
   const searchparams = useSearchParams();
 
   const slug = searchparams.get("slug");
-  console.log("slug is ", slug);
+  
 
   const { data: post, isLoading } = useQuery<Post>({
     queryKey: ["post", slug],
@@ -85,7 +85,7 @@ export default function Post(): React.JSX.Element {
   // Check follow status
   useEffect(() => {
     const checkFollow = async (): Promise<void> => {
-      if (!user || !post) return;
+      if (!post) return;
       try {
         // TODO: Implement follow functionality using actual API
         // const follows: Follow[] = await fetchFollows(user.email, post.authorEmail);
@@ -94,8 +94,8 @@ export default function Post(): React.JSX.Element {
         console.error("Failed to check follow status:", e);
       }
     };
-    checkFollow();
-  }, [user, post]);
+   checkFollow()
+  }, [ post]);
 
   const handleFollow = async (): Promise<void> => {
     if (!user) {
@@ -160,7 +160,7 @@ export default function Post(): React.JSX.Element {
               <Skeleton className="h-3 w-24" />
             </div>
           </div>
-          <Skeleton className="aspect-[16/9] rounded-lg mb-8" />
+          <Skeleton className="aspect-video rounded-lg mb-8" />
           <div className="space-y-4">
             {[1, 2, 3, 4, 5].map((i) => (
               <Skeleton key={i} className="h-4 w-full" />

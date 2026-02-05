@@ -114,7 +114,7 @@ export default function Home(): React.JSX.Element {
                           <Skeleton className="h-3 w-16" />
                         </div>
                       </div>
-                      <Skeleton className="hidden sm:block w-32 h-32 rounded-lg flex-shrink-0" />
+                      <Skeleton className="hidden sm:block w-32 h-32 rounded-lg shrink-0" />
                     </div>
                   </div>
                 ))}

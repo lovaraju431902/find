@@ -1,20 +1,17 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import PostForm from "./AdminPostForm";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Skeleton } from "@/components/ui/skeleton";
 import AdminPostsList from "@/components/admin/AdminPostsList";
 import AdminStatsList from "@/components/admin/AdminStatsList";
 import AdminUsersList from "@/components/admin/AdminUsersList";
-import { LayoutDashboard, FileText, Users, Settings as SettingsIcon } from "lucide-react";
+import { LayoutDashboard, FileText, Users,  } from "lucide-react";
 import { motion } from "framer-motion";
 
 
-type TabValue = "overview" | "posts" | "users";
+
 
 export default function AdminDashboard(): React.JSX.Element {
   

@@ -62,7 +62,7 @@ export default function Search() {
       // If tag is removed from URL (e.g. back button), clear it
       setActiveTag("");
     }
-  }, [searchParams]);
+  }, [activeTag, searchParams]);
 
   // Debounce search query
   useEffect(() => {
@@ -146,10 +146,10 @@ export default function Search() {
     window.history.replaceState({}, "", "/search");
   };
 
-  const handleTagClick = (tag: string): void => {
-    setActiveTag(tag);
-    setSearchQuery("");
-  };
+  // const handleTagClick = (tag: string): void => {
+  //   setActiveTag(tag);
+  //   setSearchQuery("");
+  // };
 
   return (
     <div className="min-h-screen bg-white pt-20 md:pt-24">
@@ -253,7 +253,7 @@ export default function Search() {
                           <Skeleton className="h-6 w-full mb-2" />
                           <Skeleton className="h-4 w-3/4" />
                         </div>
-                        <Skeleton className="w-28 h-28 rounded-lg flex-shrink-0" />
+                        <Skeleton className="w-28 h-28 rounded-lg shrink-0" />
                       </div>
                     </div>
                   ))}
