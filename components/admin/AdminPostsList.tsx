@@ -34,30 +34,13 @@ import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "@/lib/prisma";
-interface Post {
-  id:string;
-  title: string;
-  subtitle?: string;
-  content: string;
-  slug: string;
-  authorName: string;
-  authorEmail: string;
-  authorAvatar?: string;
-  featuredImage?: string;
-  tags?: string[];
-  readTime?: number | '';
-  likesCount:number;
-  commentsCount:number;
-  status?: 'draft' | 'published' | 'archived';
-  accessTier?: 'free' | 'premium' | 'exclusive';
-  publishedDate:Date;
-  createdAt:Date;
-}
+import {Post} from "@/app/(user)/blog/page";
 
 interface DeleteDialogState {
   open: boolean;
-  post: Post | null;
+  post:Post | null;
 }
+
 
 export default function AdminPostsList(): React.JSX.Element {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -70,7 +53,7 @@ export default function AdminPostsList(): React.JSX.Element {
   const { data: posts = [], isLoading } = useQuery<Post[]>({
     queryKey: ["adminPosts"],
     queryFn: async () => {
-      const response = await fetch('/api/admin/posts');
+      const response = await fetch('/api/posts');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -83,7 +66,7 @@ export default function AdminPostsList(): React.JSX.Element {
 
   const deleteMutation = useMutation({
     mutationFn: async (postId: string) => {
-      const response = await fetch(`/api/admin/posts/${postId}`, {
+      const response = await fetch(`/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -191,24 +174,11 @@ export default function AdminPostsList(): React.JSX.Element {
                         {post.status}
                       </Badge>
                     </TableCell>
-                    <TableCell>
-                      <Badge
-                        variant="outline"
-                        className={
-                          post.accessTier === "free"
-                            ? "border-gray-300"
-                            : post.accessTier === "premium"
-                            ? "border-emerald-300 text-emerald-700"
-                            : "border-purple-300 text-purple-700"
-                        }
-                      >
-                        {post.accessTier || "free"}
-                      </Badge>
-                    </TableCell>
+                    
                     <TableCell className="text-gray-500">
-                      {format(new Date(post.publishedDate), "MMM d, yyyy")}
+                      {format(new Date(post.published_date || ''), "MMM d, yyyy")}
                     </TableCell>
-                    <TableCell>{post.likesCount || 0}</TableCell>
+                    
                     <TableCell className="text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -218,13 +188,13 @@ export default function AdminPostsList(): React.JSX.Element {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                           <DropdownMenuItem
-                            onClick={() => router.push(`/admin/posts/${post.id}`)}
+                            onClick={() => router.push(`/posts/${post.id}`)}
                           >
                             <Eye className="w-4 h-4 mr-2" />
                             View
                           </DropdownMenuItem>
                           <DropdownMenuItem
-                            onClick={() => router.push(`/admin/posts/edit/${post.id}`)}
+                            onClick={() => router.push(`/posts/edit/${post.id}`)}
                           >
                             <Edit className="w-4 h-4 mr-2" />
                             Edit

@@ -56,6 +56,7 @@ export default function Search() {
   useEffect(() => {
     const tag = searchParams.get("tag");
     if (tag) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveTag(tag);
     } else if (searchParams.has("tag") === false && activeTag) {
       // If tag is removed from URL (e.g. back button), clear it

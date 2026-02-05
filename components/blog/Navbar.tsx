@@ -124,13 +124,13 @@ export default function NavBar(): React.JSX.Element {
                   ) : ( */}
                   <>
                     <Link
-                      href="/auth/login"
+                      href="/posts"
                       className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100"
                     >
-                      <span className="font-medium">Sign In</span>
+                      <span className="font-medium">Posts</span>
                     </Link>
                     <Link
-                      href="/auth/register"
+                      href="/"
                       className="flex items-center gap-3 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white mt-4"
                     >
                       <span className="font-medium">Get Started</span>
@@ -147,7 +147,7 @@ export default function NavBar(): React.JSX.Element {
                 <BookOpen className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold tracking-tight text-gray-900 font-serif">
-                Medium Clone
+                Earning Blogs
               </span>
             </Link>
           </div>

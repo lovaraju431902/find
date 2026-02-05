@@ -31,15 +31,16 @@ const postSchema = z.object({
   title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
   subtitle: z.string().max(300, 'Subtitle too long').optional(),
   content: z.string().min(1, 'Content is required'),
-  slug: z.string().min(1, 'Slug is required').regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, numbers, and hyphens'),
-  authorName: z.string().min(1, 'Author name is required'),
-  authorEmail: z.string().email('Invalid email address'),
-  authorAvatar: z.string().url('Invalid URL').optional().or(z.literal('')),
+  slug: z.string(),
+  authorName: z.string().min(1, 'Author name is required').optional(),
+  authorEmail: z.string().email('Invalid email address').optional(),
+  authorAvatar: z.string().url('Invalid URL').optional(),
   featuredImage: z.string().url('Invalid URL').optional().or(z.literal('')),
   tags: z.array(z.string()).default([]),
   readTime: z.number().int().positive().optional().or(z.literal('')),
   status: z.enum(['draft', 'published', 'archived']).default('draft'),
- 
+  views: z.string(),
+  comments: z.string(),
 });
 
 type PostFormValues = z.infer<typeof postSchema>;
@@ -61,7 +62,8 @@ export default function PostForm() {
       tags: [],
       readTime: '',
       status: 'draft',
-      
+      views:"",
+      comments: "",
     },
   });
 
@@ -77,10 +79,11 @@ export default function PostForm() {
           ...data,
           // Convert empty strings to undefined for optional fields
           subtitle: data.subtitle || undefined,
-          authorAvatar: data.authorAvatar || undefined,
-          featuredImage: data.featuredImage || undefined,
+          authorAvatar: data.authorAvatar,
+          featuredImage: data.featuredImage,
           readTime: data.readTime || undefined,
-          // Set publishedDate if status is published
+          views: data.views,
+          comments: data.comments,
           publishedDate: data.status === 'published' ? new Date().toISOString() : undefined,
         }),
       });
@@ -168,7 +171,7 @@ export default function PostForm() {
               <FormItem>
                 <FormLabel>Slug *</FormLabel>
                 <FormControl>
-                  <Input placeholder="post-url-slug" {...field} />
+                  <Input placeholder="post-slug" {...field} />
                 </FormControl>
                 <FormDescription>
                   URL-friendly identifier (lowercase, hyphens only)
@@ -313,6 +316,41 @@ export default function PostForm() {
               </FormItem>
             )}
           />
+
+
+          
+           <div className='flex flex-row gap-4'>
+             <FormField
+              control={form.control}
+              name="likes"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Likes *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter likes" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+             <FormField
+              control={form.control}
+              name="comments"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Comments *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Comments" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+
+           </div>
+
+           
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField

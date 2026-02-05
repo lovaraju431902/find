@@ -19,6 +19,8 @@ import {
   Bookmark,
   MoreHorizontal,
   Share2,
+  Eye,
+  MessageCircle,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -35,7 +37,7 @@ interface User {
   avatar_url?: string;
 }
 
-interface Post {
+export interface Post {
   id: string;
   title: string;
   subtitle?: string;
@@ -47,7 +49,8 @@ interface Post {
   featured_image?: string;
   tags?: string[];
   read_time?: number;
-  claps?: number;
+  views?: number;
+  comments?: number;
   published_date?: string; // ISO string format from API
   created_date?: string; // ISO string format from API
   status: 'draft' | 'published';
@@ -395,6 +398,35 @@ export default function Post(): React.JSX.Element {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
+
+
+
+            <div className="flex items-center gap-6 text-gray-500">
+                            <div className="flex items-center gap-2">
+                              <Eye className="w-4 h-4" />
+                              <span className="text-sm">
+                                {post.views || "1.3k"} views
+                               
+
+
+
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MessageCircle className="w-4 h-4" />
+                              <span className="text-sm">{post.comments || "29"} comments</span>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+
+
+
         </div>
 
         {/* Author Card */}

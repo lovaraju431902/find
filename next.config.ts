@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol:"https",
-        hostname:"flowbite.s3.amazonaws.com",
+        hostname:"pbs.twimg.com",
         port:"",
         pathname:"/**"
 
@@ -29,7 +29,14 @@ const nextConfig: NextConfig = {
       
       {
         protocol:"https",
-        hostname:"i.postimg.cc",
+        hostname:"res.cloudinary.com",
+        port:"",
+        pathname:"/**"
+
+      },
+      {
+        protocol:"https",
+        hostname:"pbs.twimg.com",
         port:"",
         pathname:"/**"
 

@@ -10,14 +10,15 @@ const postSchema = z.object({
   subtitle: z.string().optional(),
   content: z.string().min(1, 'Content is required'),
   slug: z.string().min(1, 'Slug is required'),
-  authorName: z.string().min(1, 'Author name is required'),
-  authorEmail: z.string().email('Valid email is required'),
+  authorName: z.string().min(1, 'Author name is required').optional(),
+  authorEmail: z.string().email('Valid email is required').optional(),
   authorAvatar: z.string().optional(),
   featuredImage: z.string().optional(),
   tags: z.array(z.string()).optional(),
   readTime: z.number().optional(),
-  status: z.enum(['draft', 'published']).optional(),
-
+  status: z.enum(['draft', 'published', 'archived']).optional(),
+  views: z.string().optional(),
+  comments: z.string().optional(),
   publishedDate: z.string().datetime().optional(),
 });
 
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest) {
           featuredImage: true,
           tags: true,
           readTime: true,
-
+          
           publishedDate: true,
           createdAt: true,
           status: true,
@@ -75,7 +76,7 @@ export async function GET(request: NextRequest) {
         featured_image: post.featuredImage,
         tags: post.tags,
 
-
+     
         published_date: post.publishedDate?.toISOString(),
         created_date: post.createdAt.toISOString(),
         status: post.status,
@@ -85,7 +86,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(transformedPost, { status: 200 });
     }
 
-    const whereClause: any = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const whereClause:any = {
       status: "published",
     };
 
@@ -193,8 +195,9 @@ export async function POST(request: Request) {
         featuredImage: validatedData.featuredImage,
         tags: validatedData.tags || [],
         readTime: validatedData.readTime,
-        status: validatedData.status || 'draft',
-
+        status: validatedData.status || 'published',
+        views: validatedData.views ,
+        comments: validatedData.comments,
         publishedDate: validatedData.publishedDate ? new Date(validatedData.publishedDate) : undefined,
       },
     });
@@ -219,5 +222,9 @@ export async function POST(request: Request) {
     );
   }
 }
+
+
+
+
 
 

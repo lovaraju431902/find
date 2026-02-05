@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { Bookmark, MoreHorizontal, Heart, MessageCircle } from "lucide-react";
+import { Bookmark, MoreHorizontal, Heart, MessageCircle, Eye } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
@@ -19,7 +19,9 @@ interface Post {
   featured_image?: string;
   tags?: string[];
   read_time?: number;
-
+  views?: number;
+  comments?: number;
+  
   published_date?: string;
   created_date: string;
   status: "draft" | "published";
@@ -104,14 +106,32 @@ export default function PostCard({ post }: PostCardProps) {
               <span>{formattedDate}</span>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-400">
+            {/* <div className="flex items-center gap-4 text-gray-400">
               <div className="flex items-center gap-1 group/stats cursor-default">
                 <Heart className="w-4 h-4 group-hover/stats:text-red-500 transition-colors" />
                 <span className="text-xs group-hover/stats:text-gray-600 transition-colors"> 10k</span>
               </div>
               <Bookmark className="w-4 h-4 hover:text-gray-800 cursor-pointer transition-colors" />
               <MoreHorizontal className="w-4 h-4 hover:text-gray-800 cursor-pointer transition-colors" />
-            </div>
+            </div> */}
+                  
+
+
+                    <div className="flex items-center gap-6 text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <Eye className="w-4 h-4" />
+                    <span className="text-sm">{post.views || "1.2k"} views</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MessageCircle className="w-4 h-4" />
+                    <span className="text-sm">{post.comments || "25"} comments</span>
+                  </div>
+                </div>
+
+
+
+
+
           </div>
         </div>
 

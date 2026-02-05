@@ -14,6 +14,7 @@ datasource db {
 enum Status {
   draft
   published
+  archived
 }
 
 
@@ -25,13 +26,14 @@ model Post {
   subtitle       String?
   content        String
   slug           String    @unique
-  authorName     String
-  authorEmail    String
-  authorAvatar   String?
+  authorName     String    @default("DeMarcus")
+  authorEmail    String  @default("Demarcus431@gmail.com")
+  authorAvatar   String  @default("https://res.cloudinary.com/di6elrrye/image/upload/v1770294516/profileblog_ajkt7o.png")
   featuredImage  String?
   tags           String[]
   readTime       Int?
- 
+  views          String? @default("1.3k")
+  comments       String? @default("25")
   
   status         Status    @default(draft)
 
