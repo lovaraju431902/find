@@ -60,7 +60,7 @@ export default function PostCard({ post }: PostCardProps) {
           <div className="space-y-2">
             {/* Author Info */}
             <Link
-              href={`/profile?email=${post.authorEmail}`}
+              href={""}
               className="flex items-center gap-2 group/author"
             >
               <Avatar className="h-5 w-5">
