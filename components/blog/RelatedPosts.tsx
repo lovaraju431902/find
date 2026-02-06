@@ -118,7 +118,7 @@ export default function RelatedPosts({
               </h4>
             </Link>
             <Link
-              href={`/profile?email=${post.author_email}`}
+              href={``}
               className="flex items-center gap-2 group/author"
             >
               <Avatar className="h-6 w-6">

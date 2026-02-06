@@ -279,7 +279,7 @@ export default function PostClient(): React.JSX.Element {
         {/* Author Info */}
         <div className="flex items-center justify-between py-6 border-b border-gray-100 mb-8">
           <div className="flex items-center gap-4">
-            <Link href={`/profile`}>
+            <Link href={``}>
               <Avatar className="h-12 w-12 ring-2 ring-gray-100">
                 <AvatarImage src={post.author_avatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700">
@@ -290,7 +290,7 @@ export default function PostClient(): React.JSX.Element {
             <div>
               <div className="flex items-center gap-3">
                 <Link
-                  href={`/profile`}
+                  href={`/`}
                   className="font-medium text-gray-900 hover:text-emerald-600 transition-colors"
                 >
                   {post.authorName}
@@ -496,7 +496,7 @@ export default function PostClient(): React.JSX.Element {
         {/* Author Card */}
         <div className="py-8 border-b border-gray-100">
           <div className="flex items-start gap-4">
-            <Link href={`/profile?email=${post.authorEmail}`}>
+            <Link href={``}>
               <Avatar className="h-16 w-16 ring-2 ring-gray-100">
                 <AvatarImage src={post.author_avatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700 text-xl">
@@ -507,7 +507,7 @@ export default function PostClient(): React.JSX.Element {
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <Link
-                  href={`/profile?email=${post.authorEmail}`}
+                  href={`/?email=${post.authorEmail}`}
                   className="font-bold text-lg text-gray-900 hover:text-emerald-600 transition-colors"
                 >
                   {post.authorName}

@@ -34,7 +34,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { useSearchParams } from 'next/navigation';
+
 
 interface User {
   email: string;
@@ -71,7 +71,6 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
   
 
 
-  console.log(slug, "slug from blog params")
   
 
 
@@ -244,7 +243,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         {/* Author Info */}
         <div className="flex items-center justify-between py-6 border-b border-gray-100 mb-8">
           <div className="flex items-center gap-4">
-            <Link href={`/profile`}>
+            <Link href={``}>
               <Avatar className="h-12 w-12 ring-2 ring-gray-100">
                 <AvatarImage src={post.author_avatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700">
@@ -255,7 +254,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
             <div>
               <div className="flex items-center gap-3">
                 <Link
-                  href={`/profile`}
+                  href={``}
                   className="font-medium text-gray-900 hover:text-emerald-600 transition-colors"
                 >
                   {post.authorName}
@@ -461,7 +460,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         {/* Author Card */}
         <div className="py-8 border-b border-gray-100">
           <div className="flex items-start gap-4">
-            <Link href={`/profile?email=${post.authorEmail}`}>
+            <Link href={``}>
               <Avatar className="h-16 w-16 ring-2 ring-gray-100">
                 <AvatarImage src={post.author_avatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700 text-xl">
@@ -472,7 +471,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <Link
-                  href={`/profile?email=${post.authorEmail}`}
+                  href={``}
                   className="font-bold text-lg text-gray-900 hover:text-emerald-600 transition-colors"
                 >
                   {post.authorName}

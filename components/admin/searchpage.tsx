@@ -313,7 +313,7 @@ export default function Search() {
                       transition={{ delay: index * 0.05 }}
                     >
                       <Link
-                        href={`/profile?email=${user.email}`}
+                        href={``}
                         className="flex items-center gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:bg-gray-50 transition-colors"
                       >
                         <Avatar className="w-12 h-12">

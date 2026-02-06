@@ -70,49 +70,7 @@ export default function NavBar(): React.JSX.Element {
                     <span className="font-medium">Home</span>
                   </Link>
 
-                  {/* {user ? (
-                    <>
-                      {isAdmin && (
-                        <Link
-                          href="/write"
-                          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100"
-                        >
-                          <PenSquare className="w-5 h-5" />
-                          <span className="font-medium">Write</span>
-                        </Link>
-                      )}
-
-                      <Link
-                        href="/mystories"
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100"
-                      >
-                        <FileText className="w-5 h-5" />
-                        <span className="font-medium">My Stories</span>
-                      </Link>
-                      <Link
-                        href={`/profile?email=${user?.email}`}
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100"
-                      >
-                        <User className="w-5 h-5" />
-                        <span className="font-medium">Profile</span>
-                      </Link>
-                      <Link
-                        href="/settings"
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100"
-                      >
-                        <Settings className="w-5 h-5" />
-                        <span className="font-medium">Settings</span>
-                      </Link>
-                      <Button
-                        variant="ghost"
-                        onClick={handleLogout}
-                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 text-red-600 justify-start w-full"
-                      >
-                        <LogOut className="w-5 h-5" />
-                        <span className="font-medium">Sign out</span>
-                      </Button>
-                    </>
-                  ) : ( */}
+                
                   <>
                     <Link
                       href="/posts"
@@ -143,7 +101,7 @@ export default function NavBar(): React.JSX.Element {
             </Link>
           </div>
 
-          {/* Right: Search + Profile */}
+          {/* Right: Search */}
           <div className="flex items-center gap-3 flex-1 justify-end">
             {/* Search Bar */}
             <div className="max-w-xs w-full hidden sm:block">
@@ -177,83 +135,7 @@ export default function NavBar(): React.JSX.Element {
               </Link>
             )}
 
-            {/* Profile Avatar or Auth Buttons */}
-            {/* {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-9 w-9 rounded-full p-0 ml-2">
-                    <Avatar className="h-9 w-9 ring-1 ring-gray-200 hover:ring-gray-300 transition-all">
-                      <AvatarImage src={user.image || ""} />
-                      <AvatarFallback className="bg-gray-100 text-gray-700 font-medium">
-                        {user.name?.[0] || user.email?.[0]?.toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl border border-gray-100 shadow-lg">
-                  <div className="px-3 py-2 mb-2 bg-gray-50/50 rounded-lg">
-                    <p className="font-medium text-gray-900 truncate">{user.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
-                    {isAdmin && <span className="text-xs font-semibold text-emerald-600">Admin</span>}
-                  </div>
-
-                  <DropdownMenuItem asChild>
-                    <Link href={`/profile?email=${user.email}`} className="cursor-pointer rounded-md">
-                      <User className="w-4 h-4 mr-2" />
-                      Profile
-                    </Link>
-                  </DropdownMenuItem>
-
-                  {isAdmin && (
-                    <DropdownMenuItem asChild>
-                      <Link href="/admin/posts" className="cursor-pointer rounded-md">
-                        <Settings className="w-4 h-4 mr-2" />
-                        Admin Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                  )}
-
-                  <DropdownMenuItem asChild>
-                    <Link href="/mystories" className="cursor-pointer rounded-md">
-                      <FileText className="w-4 h-4 mr-2" />
-                      My Stories
-                    </Link>
-                  </DropdownMenuItem>
-
-                  <DropdownMenuItem asChild>
-                    <Link href="/settings" className="cursor-pointer rounded-md">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Settings
-                    </Link>
-                  </DropdownMenuItem>
-
-                  <DropdownMenuSeparator className="my-2" />
-
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 focus:text-red-600 cursor-pointer rounded-md">
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Sign out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <div className="flex items-center gap-3 ml-2">
-                <Link href="/auth/login">
-                  <Button
-                    variant="ghost"
-                    className="hidden sm:inline-flex rounded-full px-5 text-gray-700 hover:text-gray-900"
-                  >
-                    Sign in
-                  </Button>
-                </Link>
-                <Link href="/auth/register">
-                  <Button
-                    className="bg-gray-900 hover:bg-black text-white rounded-full px-5 transition-colors"
-                  >
-                    Get started
-                  </Button>
-                </Link>
-              </div>
-            )} */}
+          
           </div>
         </div>
       </div>

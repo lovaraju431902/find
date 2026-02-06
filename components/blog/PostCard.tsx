@@ -20,17 +20,14 @@ interface Post {
   read_time?: number;
   views?: number;
   comments?: number;
-  
+
   published_date?: string;
   created_date: string;
   status: "draft" | "published";
-
 }
-
 
 interface PostCardProps {
   post: Post;
-
 }
 
 export default function PostCard({ post }: PostCardProps) {
@@ -38,20 +35,7 @@ export default function PostCard({ post }: PostCardProps) {
     ? format(new Date(post.published_date), "MMM d")
     : format(new Date(post.created_date), "MMM d");
 
-  // Get comment count for this post
-  // const { data: comments = [] } = useQuery<Comment[]>({
-  //   queryKey: ["commentCount", post.id],
-  //   queryFn: async () => {
-  //     const response = await fetch(`/api/comments?post_id=${post.id}`);
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-
-  //     return response.json();
-  //   },
-  // });
-
+ 
 
   return (
     <article className="group py-6 border-b border-gray-100 last:border-0 hover:bg-white transition-colors">
@@ -59,10 +43,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="flex-1 min-w-0 flex flex-col h-full justify-between">
           <div className="space-y-2">
             {/* Author Info */}
-            <Link
-              href={""}
-              className="flex items-center gap-2 group/author"
-            >
+            <Link href={""} className="flex items-center gap-2 group/author">
               <Avatar className="h-5 w-5">
                 <AvatarImage src={post.author_avatar} />
                 <AvatarFallback className="bg-gray-100 text-gray-700 text-[10px]">
@@ -93,39 +74,33 @@ export default function PostCard({ post }: PostCardProps) {
               <span className="bg-gray-100 px-2 py-1 rounded-full text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
                 free
               </span>
-              <span className="hidden md:inline-block">{post.read_time || 5} min read</span>
+              <span className="hidden md:inline-block">
+                {post.read_time || 5} min read
+              </span>
               <span className="md:hidden">{post.read_time || 5} min </span>
               <span>·</span>
               <span>{formattedDate}</span>
             </div>
 
-            {/* <div className="flex items-center gap-4 text-gray-400">
-              <div className="flex items-center gap-1 group/stats cursor-default">
-                <Heart className="w-4 h-4 group-hover/stats:text-red-500 transition-colors" />
-                <span className="text-xs group-hover/stats:text-gray-600 transition-colors"> 10k</span>
+            
+
+            <div className="flex items-center gap-6 text-gray-500">
+              <div className="flex items-center gap-2">
+                <Eye className="w-4 h-4" />
+                <span className="text-sm hidden md:inline-block">
+                  {post.views || "1.3k"} views
+                </span>
+                <span className="text-sm md:hidden">
+                  {post.views || "1.3k"}
+                </span>
               </div>
-              <Bookmark className="w-4 h-4 hover:text-gray-800 cursor-pointer transition-colors" />
-              <MoreHorizontal className="w-4 h-4 hover:text-gray-800 cursor-pointer transition-colors" />
-            </div> */}
-                  
-
-
-                    <div className="flex items-center gap-6 text-gray-500">
-                  <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4" />
-                    <span className="text-sm hidden md:inline-block">{post.views || "1.3k"} views</span>
-                    <span className="text-sm md:hidden">{post.views || "1.3k"}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4" />
-                    <span className="text-sm">{post.comments || "29"} comments</span>
-                  </div>
-                </div>
-
-
-
-
-
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4" />
+                <span className="text-sm">
+                  {post.comments || "29"} comments
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -200,7 +200,7 @@ export default function PostPage({ slug}: { slug: string }) {
             {/* Author Info */}
             <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
               <div className="flex items-center gap-4">
-                <Link href={`/profile?email=${post.authorEmail}`}>
+                <Link href={`/`}>
                   <Avatar className="h-12 w-12 cursor-pointer">
                     <AvatarImage src={post.author_avatar} />
                     <AvatarFallback className="bg-emerald-100 text-emerald-700">
@@ -210,7 +210,7 @@ export default function PostPage({ slug}: { slug: string }) {
                 </Link>
                 <div>
                   <Link 
-                    href={`/profile?email=${post.authorEmail}`}
+                    href={`/`}
                     className="font-bold text-lg text-gray-900 hover:text-emerald-600 transition-colors"
                   >
                     {post.authorName}
