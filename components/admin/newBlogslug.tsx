@@ -65,50 +65,21 @@ export interface Post {
 export default function NewPostClient({ slug }: { slug: string }): React.JSX.Element {
   const [user, setUser] = useState<User | null>(null);
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
-  
-
-  
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const { data: post, isLoading } = useQuery<Post>({
     queryKey: ["post", slug],
     queryFn: async () => {
       const response = await fetch(`/api/posts/${slug}`);
       
-      console.log("res", response);
       if (!response.ok) {
         throw new Error('Failed to fetch post');
       }
       const resdata = await response.json();
-      console.log("main data", resdata);
+      
       return resdata;
     },
     enabled: !!slug,
   });
 
-  console.log(post, "post data");
 
   // Check follow status
   useEffect(() => {
@@ -116,8 +87,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
       if (!post) return;
       try {
         // TODO: Implement follow functionality using actual API
-        // const follows: Follow[] = await fetchFollows(user.email, post.authorEmail);
-        // setIsFollowing(follows.length > 0);
+        
       } catch (e) {
         console.error("Failed to check follow status:", e);
       }

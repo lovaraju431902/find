@@ -24,74 +24,14 @@ const postSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const url = new URL(request.url);
+    
     
     const {searchParams} = new URL(request.url);
     const limit = parseInt( "10");
     const offset = parseInt("0");
     const tag = searchParams.get("tag");
     
-    // const slug = url.origin.split("/").pop() || "";
-
-
-    // console.log("Slug from rote:", slug)
-
-    // if (slug!==process.env.NEXT_PUBLIC_BASE_URL) {
-    //   const post = await prisma.post.findFirst({
-    //     where: {
-    //       slug,
-    //       status: "published"
-    //     },
-    //     select: {
-    //       id: true,
-    //       title: true,
-    //       subtitle: true,
-    //       slug: true,
-    //       authorName: true,
-    //       authorEmail: true,
-    //       authorAvatar: true,
-    //       content: true,
-    //       featuredImage: true,
-    //       tags: true,
-    //       readTime: true,
-          
-    //       publishedDate: true,
-    //       createdAt: true,
-    //       status: true,
-
-    //     }
-    //   });
-
-    //   if (!post) {
-    //     return NextResponse.json(
-    //       { error: 'Post not found' },
-    //       { status: 404 }
-    //     );
-    //   }
-
-    //   // Transform single post
-    //   const transformedPost = {
-    //     id: post.id,
-    //     title: post.title,
-    //     subtitle: post.subtitle,
-    //     slug: post.slug,
-    //     authorName: post.authorName,
-    //     authorEmail: post.authorEmail,
-    //     author_avatar: post.authorAvatar,
-    //     content: post.content,
-    //     featured_image: post.featuredImage,
-    //     tags: post.tags,
-
-     
-    //     published_date: post.publishedDate?.toISOString(),
-    //     created_date: post.createdAt.toISOString(),
-    //     status: post.status,
-
-    //   };
-
-    //   return NextResponse.json(transformedPost, { status: 200 });
-    // }
-
+   
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const whereClause:any = {
       status: "published",
@@ -161,17 +101,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: Request) {
   try {
-    // const session = await auth.api.getSession({
-    //   headers: await headers()
-    // });
-
-    // if (!session || session.user.role !== 'admin') {
-    //   return NextResponse.json(
-    //     { error: 'Unauthorized: Only admins can create posts' },
-    //     { status: 403 }
-    //   );
-    // }
-
+   
     const body = await request.json();
 
     // Validate the input using zod
