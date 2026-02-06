@@ -51,14 +51,14 @@ export interface Post {
   access_tier?: 'free' | 'premium' | 'advanced';
 }
 
-export default function PostPage({ id }: { id: string }) {
+export default function PostPage({ slug}: { slug: string }) {
   const router = useRouter();
   
 
   const { data: post, isLoading, isError } = useQuery<Post>({
-    queryKey: ["post", id],
+    queryKey: ["post", slug],
     queryFn: async () => {
-      const response = await fetch(`/api/posts/${id}`);
+      const response = await fetch(`/api/posts/${slug}`);
       
       if (!response.ok) {
         if (response.status === 404) {
@@ -70,7 +70,7 @@ export default function PostPage({ id }: { id: string }) {
       const resdata = await response.json();
       return resdata;
     },
-    enabled: !!id,
+    enabled: !!slug,
   });
 
   // Check if post exists and is published
@@ -84,7 +84,9 @@ export default function PostPage({ id }: { id: string }) {
   const handleShare = async (platform: string): Promise<void> => {
     if (!post) return;
     
-    const url = `${window.location.origin}/posts/${post.id}`;
+    const url = `${window.location.origin}/posts/${post.slug}`;
+    
+    
     const text = `Check out this post: ${post.title}`;
     
     switch (platform) {

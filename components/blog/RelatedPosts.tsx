@@ -101,7 +101,7 @@ export default function RelatedPosts({
       <div className="grid md:grid-cols-3 gap-6">
         {posts.map((post: PostWithScore) => (
           <article key={post.id} className="group">
-            <Link href={`/blog?slug=${post.slug}`}>
+            <Link href={`/blog/${post.slug}`}>
               <div className="aspect-[16/10] rounded-lg overflow-hidden mb-3 bg-gray-100">
                 {post.featured_image ? (
                   <img

@@ -323,16 +323,15 @@
 // }
 
 
-
 import PostPage from '@/components/admin/blogpage'
 
 
-const page = async ({ params }: { params: Promise<{ id: string }>} ) => {
-    const { id } = await params
-    console.log(id)
+const page = async ({ params }: { params: Promise<{ slug: string }>} ) => {
+    const { slug } = await params
+    // console.log(id)
   return (
     <div>
-        <PostPage id={id} key={id} />
+        <PostPage slug={slug} key={slug} />
     </div>
   )
 }

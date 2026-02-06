@@ -1,4 +1,6 @@
 
+
+
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useQuery } from "@tanstack/react-query";
@@ -60,14 +62,16 @@ export interface Post {
   access_tier?: 'free' | 'premium' | 'advanced';
 }
 
-export default function PostClient(): React.JSX.Element {
+export default function NewPostClient({ slug }: { slug: string }): React.JSX.Element {
   const [user, setUser] = useState<User | null>(null);
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
-  const searchparams = useSearchParams();
-
-  const slug = searchparams.get("slug");
+  
 
   
+  
+
+
+  console.log(slug, "slug from blog params")
   
 
 
@@ -92,12 +96,8 @@ export default function PostClient(): React.JSX.Element {
   const { data: post, isLoading } = useQuery<Post>({
     queryKey: ["post", slug],
     queryFn: async () => {
-      const response = await fetch(`/api/posts?slug=${slug}`);
-      const getSlug=localStorage.getItem("slug")
-      if(getSlug){
-        localStorage.removeItem("slug");
-        localStorage.setItem("slug", slug || "");
-      } 
+      const response = await fetch(`/api/posts/${slug}`);
+      
       console.log("res", response);
       if (!response.ok) {
         throw new Error('Failed to fetch post');
@@ -148,41 +148,6 @@ export default function PostClient(): React.JSX.Element {
       console.error("Failed to toggle follow:", error);
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   const copyLink = (): void => {
     navigator.clipboard.writeText(window.location.href);

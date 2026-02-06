@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { X, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function EditPostForm({id}:{id:string}) {
+export default function EditPostForm({slug}:{slug:string}) {
   const router = useRouter();
   const [formData, setFormData] = React.useState({
     title: '',
@@ -36,9 +36,9 @@ export default function EditPostForm({id}:{id:string}) {
 
   // Fetch existing post data
   const { data: postData, isLoading: isPostLoading, isError: isPostError } = useQuery({
-    queryKey: ['post', id],
+    queryKey: ['post', slug],
     queryFn: async () => {
-      const response = await fetch(`/api/posts/${id}`);
+      const response = await fetch(`/api/posts/${slug}`);
       if (!response.ok) {
         throw new Error('Failed to fetch post');
       }
@@ -70,7 +70,7 @@ export default function EditPostForm({id}:{id:string}) {
   // Update post mutation
   const updatePostMutation = useMutation({
     mutationFn: async (data: typeof formData) => {
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`/api/posts/${slug}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

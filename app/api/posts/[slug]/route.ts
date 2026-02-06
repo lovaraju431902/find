@@ -19,15 +19,15 @@ const postUpdateSchema = z.object({
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }>}
+  { params }: { params: Promise<{ slug: string }>}
 ) {
-  const { id } = await params;
+  const { slug } = await params;
   try {
-    console.log('Fetching post:', id);
+    console.log('Fetching post:', slug);
     // const { id } = params;
     
     const post = await prisma.post.findUnique({
-      where: { id }
+      where: { slug }
     });
 
     if (!post) {
@@ -60,7 +60,7 @@ export async function GET(
   } catch (error) {
     console.error('Error fetching post:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch post', id: id || "undefined"},
+      { error: 'Failed to fetch post', id: slug || "undefined"},
       { status: 500 }
     );
   }
@@ -68,10 +68,10 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { slug} = await params;
     const body = await request.json();
 
     // Validate the input
@@ -79,7 +79,7 @@ export async function PUT(
 
     // Check if post exists
     const existingPost = await prisma.post.findUnique({
-      where: { id }
+      where: { slug }
     });
 
     if (!existingPost) {
@@ -91,9 +91,8 @@ export async function PUT(
 
     // Check if slug is already taken by another post
     const existingSlugPost = await prisma.post.findFirst({
-      where: {
-        slug: validatedData.slug,
-        id: { not: id }
+      where:{
+        slug:slug
       }
     });
 
@@ -106,7 +105,7 @@ export async function PUT(
 
     // Update the post
     const updatedPost = await prisma.post.update({
-      where: { id },
+      where: { slug},
       data: {
         title: validatedData.title,
         subtitle: validatedData.subtitle,
@@ -147,14 +146,14 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { slug } = await params;
 
     // Check if post exists
     const existingPost = await prisma.post.findUnique({
-      where: { id }
+      where: { slug }
     });
 
     if (!existingPost) {
@@ -166,7 +165,7 @@ export async function DELETE(
 
     // Delete the post
     await prisma.post.delete({
-      where: { id }
+      where: { slug }
     });
 
     return NextResponse.json(

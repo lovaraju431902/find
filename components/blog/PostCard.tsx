@@ -27,13 +27,6 @@ interface Post {
 
 }
 
-interface Comment {
-  id: string;
-  post_id: string;
-  content: string;
-  author_email: string;
-  created_date: string;
-}
 
 interface PostCardProps {
   post: Post;
@@ -82,7 +75,7 @@ export default function PostCard({ post }: PostCardProps) {
             </Link>
 
             {/* Title + Subtitle */}
-            <Link href={`/blog?slug=${post.slug}`} className="block group/link">
+            <Link href={`/blog/${post.slug}`} className="block group/link">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 font-serif mb-1 leading-tight group-hover/link:text-gray-700 transition-colors">
                 {post.title}
               </h2>
@@ -100,7 +93,8 @@ export default function PostCard({ post }: PostCardProps) {
               <span className="bg-gray-100 px-2 py-1 rounded-full text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer">
                 free
               </span>
-              <span>{post.read_time || 5} min read</span>
+              <span className="hidden md:inline-block">{post.read_time || 5} min read</span>
+              <span className="md:hidden">{post.read_time || 5} min </span>
               <span>·</span>
               <span>{formattedDate}</span>
             </div>
@@ -119,7 +113,8 @@ export default function PostCard({ post }: PostCardProps) {
                     <div className="flex items-center gap-6 text-gray-500">
                   <div className="flex items-center gap-2">
                     <Eye className="w-4 h-4" />
-                    <span className="text-sm">{post.views || "1.3k"} views</span>
+                    <span className="text-sm hidden md:inline-block">{post.views || "1.3k"} views</span>
+                    <span className="text-sm md:hidden">{post.views || "1.3k"}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MessageCircle className="w-4 h-4" />

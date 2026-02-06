@@ -24,13 +24,19 @@ const postSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get("limit") || "10");
-    const offset = parseInt(searchParams.get("offset") || "0");
+    const url = new URL(request.url);
+    console.log("URL:", url)
+    const {searchParams} = new URL(request.url);
+    const limit = parseInt( "10");
+    const offset = parseInt("0");
     const tag = searchParams.get("tag");
-    const slug = searchParams.get("slug");
+    console.log("Tag: route", tag)
+    const slug = url.origin.split("/").pop() || "";
 
-    if (slug) {
+
+    console.log("Slug from rote:", slug)
+
+    if (slug!=="localhost:3000") {
       const post = await prisma.post.findFirst({
         where: {
           slug,
