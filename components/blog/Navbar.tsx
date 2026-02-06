@@ -106,14 +106,14 @@ export default function NavBar(): React.JSX.Element {
             {/* Search Bar */}
             <div className="max-w-xs w-full hidden sm:block">
               <div className="relative group">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-gray-600 transition-colors" />
+                <Search className="absolute dark:text-gray-600 left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-gray-600 transition-colors" />
                 <Input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="pl-10 bg-gray-50 border-gray-100 rounded-full h-10 focus:bg-white focus:ring-1 focus:ring-gray-200 transition-all"
+                  className="pl-10 dark:bg-gray-50 border-gray-100 rounded-full h-10 dark:focus:bg-white focus:bg-white focus:ring-1 focus:ring-gray-200 transition-all"
                 />
               </div>
             </div>

@@ -105,7 +105,7 @@ export default function PostCard({ post }: PostCardProps) {
         </div>
 
         {post.featured_image && (
-          <Link href={`/blog?slug=${post.slug}`} className=" shrink-0">
+          <Link href={`/blog/${post.slug}`} className=" shrink-0">
             <div className="relative w-28 h-28 sm:w-36 sm:h-28 md:w-40 md:h-28 bg-gray-100 rounded-sm overflow-hidden">
               <Image
                 src={post.featured_image}
