@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${post.title} - Blogify`;
   const description = post.subtitle || `${post.title} - Read the latest article on our blog`;
   const imageUrl = post.featuredImage || '/images/default-blog-image.jpg';
-  const url = `${baseUrl}/blog?slug=${post.slug}`;
+  const url = `${baseUrl}/blog/${post.slug}`;
 
   return {
     title,
