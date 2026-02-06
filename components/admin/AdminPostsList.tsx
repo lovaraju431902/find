@@ -32,7 +32,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MoreVertical, Eye, Edit, Trash2, Search } from "lucide-react";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
-import { Post } from "./blogs";
+import { Post } from "./newBlogslug";
 
 interface DeleteDialogState {
   open: boolean;
