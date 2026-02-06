@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
 
     console.log("Slug from rote:", slug)
 
-    if (slug!=="localhost:3000") {
+    if (slug!==process.env.NEXT_PUBLIC_BASE_URL) {
       const post = await prisma.post.findFirst({
         where: {
           slug,
