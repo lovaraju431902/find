@@ -33,6 +33,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTheme } from 'next-themes';
 
 
 
@@ -63,6 +64,7 @@ export interface Post {
 }
 
 export default function NewPostClient({ slug }: { slug: string }): React.JSX.Element {
+    const { setTheme } = useTheme()
   const [user, setUser] = useState<User | null>(null);
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const { data: post, isLoading } = useQuery<Post>({
@@ -276,9 +278,9 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button variant="ghost" size="icon" className="text-gray-500">
               <Bookmark className="w-5 h-5" />
-            </Button>
+            
+            
             <Button variant="ghost" size="icon" className="text-gray-500">
               <MoreHorizontal className="w-5 h-5" />
             </Button>
@@ -377,10 +379,10 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-gray-500">
-                  <Share2 className="w-5 h-5" />
+                  <Share2 className="w-5 h-5 focus:outline-none" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" >
+              <DropdownMenuContent align="end" className='bg-white font-sm font-bold cursor-pointer'>
                 <DropdownMenuItem onClick={copyLink}>
                   <Link2 className="w-4 h-4 mr-2" />
                   Copy link

@@ -11,7 +11,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   
   const { slug } = await params
- 
+  
   if (slug === undefined) {
     return {
       title: 'Blog - Blogify',
@@ -82,8 +82,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
- 
- 
+  
     const { slug } = await params
   return (
     <div> 

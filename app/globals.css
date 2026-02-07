@@ -1,7 +1,51 @@
 
+
+
+@tailwind utilities;
 @import "tailwindcss";
 @import "tw-animate-css";
 html { scroll-behavior: smooth; }
+
+
+
+
+
+
+
+
+/* Optional: Define CSS variables for base background and text colors */
+@layer base {
+  :root {
+    --background: white;
+    --foreground: black;
+  }
+
+  .dark {
+    --background: black;
+    --foreground: white;
+  }
+
+  body {
+    /* Apply the CSS variables to the body */
+    background: var(--background);
+    color: var(--foreground);
+    /* Add smooth transitions when changing themes */
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes fade-in {
   0% {
