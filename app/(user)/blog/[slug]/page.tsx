@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   // Fetch the post data server-side (same API as in your client component)
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = "https://earningblgs.xyz";
   const response = await fetch(`${baseUrl}/api/posts/${slug}`);
 
   if (!response.ok) {
