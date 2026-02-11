@@ -88,18 +88,21 @@ export async function PUT(
       );
     }
 
-    // Check if slug is already taken by another post
-    const existingSlugPost = await prisma.post.findFirst({
-      where:{
-        slug:slug
-      }
-    });
+    // Check if slug is already taken by another post (not the current one)
+    if (validatedData.slug !== slug) { // Only check if the slug is being changed
+      const existingSlugPost = await prisma.post.findFirst({
+        where: {
+          slug: validatedData.slug,
+          id: { not: existingPost.id } // Exclude current post from check
+        }
+      });
 
-    if (existingSlugPost) {
-      return NextResponse.json(
-        { error: 'Slug already exists' },
-        { status: 400 }
-      );
+      if (existingSlugPost) {
+        return NextResponse.json(
+          { error: 'Slug already exists' },
+          { status: 400 }
+        );
+      }
     }
 
     // Update the post

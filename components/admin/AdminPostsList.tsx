@@ -33,6 +33,7 @@ import { MoreVertical, Eye, Edit, Trash2, Search } from "lucide-react";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { Post } from "./newBlogslug";
+import { URL } from "@/lib/url";
 
 interface DeleteDialogState {
   open: boolean;
@@ -51,7 +52,7 @@ export default function AdminPostsList(): React.JSX.Element {
   const { data: posts = [], isLoading } = useQuery<Post[]>({
     queryKey: ["adminPosts"],
     queryFn: async () => {
-      const response = await fetch('/api/posts');
+      const response = await fetch(`${URL}/api/posts`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -64,7 +65,7 @@ export default function AdminPostsList(): React.JSX.Element {
 
   const deleteMutation = useMutation({
     mutationFn: async (postId: string) => {
-      const response = await fetch(`/api/posts/${postId}`, {
+      const response = await fetch(`${URL}/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -96,7 +97,7 @@ export default function AdminPostsList(): React.JSX.Element {
 
   const handleDelete = (): void => {
     if (deleteDialog.post) {
-      deleteMutation.mutate(deleteDialog.post.id);
+      deleteMutation.mutate(deleteDialog.post.slug);
     }
   };
 
@@ -179,20 +180,20 @@ export default function AdminPostsList(): React.JSX.Element {
                     
                     <TableCell className="text-right">
                       <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
+                        <DropdownMenuTrigger asChild className="bg-white">
                           <Button variant="ghost" size="icon">
                             <MoreVertical className="w-4 h-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                           <DropdownMenuItem
-                            onClick={() => router.push(`/posts/${post.id}`)}
+                            onClick={() => router.push(`/posts/${post.slug}`)}
                           >
                             <Eye className="w-4 h-4 mr-2" />
                             View
                           </DropdownMenuItem>
                           <DropdownMenuItem
-                            onClick={() => router.push(`/posts/edit/${post.id}`)}
+                            onClick={() => router.push(`/posts/edit/${post.slug}`)}
                           >
                             <Edit className="w-4 h-4 mr-2" />
                             Edit
@@ -216,7 +217,7 @@ export default function AdminPostsList(): React.JSX.Element {
       </div>
 
       <Dialog open={deleteDialog.open} onOpenChange={handleDialogOpenChange}>
-        <DialogContent>
+        <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>Delete Post</DialogTitle>
             <DialogDescription>
@@ -231,6 +232,7 @@ export default function AdminPostsList(): React.JSX.Element {
               variant="destructive"
               onClick={handleDelete}
               disabled={deleteMutation.isPending}
+              className="bg-red-600 hover:bg-red-700 text-white"
             >
               {deleteMutation.isPending ? "Deleting..." : "Delete"}
             </Button>
