@@ -34,6 +34,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from 'next-themes';
+import { URL } from '@/lib/url';
 
 
 
@@ -52,11 +53,11 @@ export interface Post {
   authorEmail: string;
   authorAvatar?: string;
   content: string;
-  featured_image?: string;
+  featuredImage?: string;
   tags?: string[];
   read_time?: number;
-  views?: number;
-  comments?: number;
+  views: string;
+  comments: string;
   published_date?: string; // ISO string format from API
   created_date?: string; // ISO string format from API
   status: 'draft' | 'published';
@@ -70,7 +71,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
   const { data: post, isLoading } = useQuery<Post>({
     queryKey: ["post", slug],
     queryFn: async () => {
-      const response = await fetch(`/api/posts/${slug}`);
+      const response = await fetch(`${URL}/api/posts/${slug}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch post');
@@ -288,10 +289,10 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         </div>
 
         {/* Featured Image */}
-        {post.featured_image && (
+        {post.featuredImage && (
           <div className="aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-100">
             <img
-              src={post.featured_image}
+              src={post.featuredImage}
               alt={post.title}
               className="w-full h-full object-cover"
             />
@@ -302,9 +303,9 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         <div
           className="prose prose-lg max-w-none mb-8"
           style={{
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "20px",
-            lineHeight: "1.8",
+            fontFamily: "Roboto, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            fontSize: "1.5rem",
+            lineHeight: "1.6",
           }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
@@ -405,7 +406,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
                             <div className="flex items-center gap-2">
                               <Eye className="w-4 h-4" />
                               <span className="text-sm">
-                                {post.views || "1.3k"} views
+                                {post.views} views
                                
 
 
@@ -414,7 +415,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
                             </div>
                             <div className="flex items-center gap-2">
                               <MessageCircle className="w-4 h-4" />
-                              <span className="text-sm">{post.comments || "29"} comments</span>
+                              <span className="text-sm">{post.comments} comments</span>
                             </div>
                           </div>
 
