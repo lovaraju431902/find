@@ -20,7 +20,7 @@ export default function PostForm() {
   const [readTime, setReadTime] = useState('');
   const [views, setViews] = useState('0');
   const [comments, setComments] = useState('0');
-  const [status, setStatus] = useState('draft');
+  const [status, setStatus] = useState('published');
 
   const addTag = () => {
     if (tagInput.trim() && !tags.includes(tagInput.trim())) {
@@ -47,8 +47,8 @@ export default function PostForm() {
       featuredImage: featuredImage || undefined,
       tags,
       readTime: readTime ? parseInt(readTime) : undefined,
-      views: parseInt(views) || 0,
-      comments: parseInt(comments) || 0,
+      views: views|| 0,
+      comments: comments || 0,
       status,
       publishedDate: status === 'published' ? new Date().toISOString() : undefined,
     };
