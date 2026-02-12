@@ -11,9 +11,9 @@ export default function PostForm() {
   const [subtitle, setSubtitle] = useState('');
   const [content, setContent] = useState('');
   const [slug, setSlug] = useState('');
-  const [authorName, setAuthorName] = useState('');
-  const [authorEmail, setAuthorEmail] = useState('');
-  const [authorAvatar, setAuthorAvatar] = useState('');
+  const [authorName, setAuthorName] = useState('Marcus');
+  const [authorEmail, setAuthorEmail] = useState('marcus@example.com');
+  const [authorAvatar, setAuthorAvatar] = useState('https://pbs.twimg.com/media/HA4fNZ7a0AAko6u.jpg');
   const [featuredImage, setFeaturedImage] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
