@@ -50,7 +50,7 @@ export interface Post {
   slug: string;
   authorName: string;
   authorEmail: string;
-  author_avatar?: string;
+  authorAvatar?: string;
   content: string;
   featured_image?: string;
   tags?: string[];
@@ -217,7 +217,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           <div className="flex items-center gap-4">
             <Link href={``}>
               <Avatar className="h-12 w-12 ring-2 ring-gray-100">
-                <AvatarImage src={post.author_avatar} />
+                <AvatarImage src={post.authorAvatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700">
                   {post.authorName?.[0]}
                 </AvatarFallback>
@@ -434,7 +434,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           <div className="flex items-start gap-4">
             <Link href={``}>
               <Avatar className="h-16 w-16 ring-2 ring-gray-100">
-                <AvatarImage src={post.author_avatar} />
+                <AvatarImage src={post.authorAvatar} />
                 <AvatarFallback className="bg-emerald-100 text-emerald-700 text-xl">
                   {post.authorName?.[0]}
                 </AvatarFallback>
