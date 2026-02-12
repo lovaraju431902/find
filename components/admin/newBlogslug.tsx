@@ -301,11 +301,11 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
 
         {/* Content */}
         <div
-          className="prose prose-lg max-w-none mb-8"
+          className="prose prose-lg max-w-none mb-8 p-3"
           style={{
             fontFamily: "Roboto, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
             fontSize: "1.5rem",
-            lineHeight: "1.6",
+            lineHeight: "2",
           }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
@@ -313,8 +313,16 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         <style>{`
           .prose h1, .prose h2, .prose h3 {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-          }
+            font-weight: 800;
+        
+        
+            }
+            .prose p{
+            font-size: 1.5rem;
+            line-height: 2;
+            font-family: "Roboto, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+           
+            }
           .prose h1 { font-size: 32px; margin-bottom: 16px; }
           .prose h2 { font-size: 26px; margin-top: 32px; margin-bottom: 12px; }
           .prose h3 { font-size: 22px; margin-top: 24px; margin-bottom: 8px; }
