@@ -18,8 +18,8 @@ interface Post {
   featured_image?: string;
   tags?: string[];
   read_time?: number;
-  views?: number;
-  comments?: number;
+  views?: string;
+  comments?: string;
 
   published_date?: string;
   created_date: string;
@@ -87,17 +87,19 @@ export default function PostCard({ post }: PostCardProps) {
             <div className="flex items-center gap-6 text-gray-500">
               <div className="flex items-center gap-2">
                 <Eye className="w-4 h-4" />
-                <span className="text-sm hidden md:inline-block">
-                  {post.views || "1.3k"} views
+                <span className="text-sm hidden text-black md:inline-block">
+                  {post.views} views
                 </span>
-                <span className="text-sm md:hidden">
-                  {post.views || "1.3k"}
-                </span>
+                <span className="text-sm text-black md:hidden">
+                  {post.views}</span>
               </div>
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-4 h-4" />
-                <span className="text-sm">
-                  {post.comments || "29"} comments
+                <span className="text-sm text-black hidden md:inline-block">
+                  {post.comments} comments
+                </span>
+                <span className="text-sm text-black md:hidden">
+                  {post.comments}
                 </span>
               </div>
             </div>

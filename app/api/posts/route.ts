@@ -61,6 +61,9 @@ export async function GET(request: NextRequest) {
         content: true, // Be careful returning full content in list view if heavy
         featuredImage: true,
         tags: true,
+        views: true,
+        comments: true,
+        
         readTime: true,
 
         publishedDate: true,
@@ -82,12 +85,15 @@ export async function GET(request: NextRequest) {
       content: post.content,
       featured_image: post.featuredImage,
       tags: post.tags,
+      views: post.views,
+      comments: post.comments,
+      
       read_time: post.readTime,
       published_date: post.publishedDate?.toISOString(),
       created_date: post.createdAt.toISOString(),
       status: post.status,
     }));
-
+    // console.log(transformedPosts);
     return NextResponse.json(transformedPosts, { status: 200 });
 
   } catch (error) {

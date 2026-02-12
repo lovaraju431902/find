@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import NavBar from "@/components/blog/Navbar";
+import { URL } from "@/lib/url";
 
 interface Post {
   id: string;
@@ -22,6 +23,8 @@ interface Post {
   tags?: string[];
   read_time?: number;
   claps?: number;
+  views?: string;
+  comments?: string;
   published_date?: string;
   created_date: string;
   status: 'draft' | 'published'
@@ -63,6 +66,7 @@ export default function Home(): React.JSX.Element {
   });
 
   const posts = data?.pages.flat() ?? [];
+  
 
   const lastPostRef = useCallback(
     (node: HTMLDivElement | null) => {
