@@ -23,6 +23,7 @@ import {
   Share2,
   Eye,
   MessageCircle,
+  X,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -285,6 +286,12 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           </div> */}
 
            {/* Share Actions */}
+
+               <Button variant="default" onClick={() => setTheme("dark")} size="icon-lg">Black</Button>
+            
+            <Button variant="default" onClick={() => setTheme("light")} size="icon-lg">White</Button>
+            
+            
           <div className="flex items-center gap-2 ">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -292,15 +299,19 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
                   <Share2 className="w-5 h-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className='bg-white font-sm cursor-pointer'>
+              <DropdownMenuContent align="end" className='dark:bg-white text-black bg-white font-sm cursor-pointer'>
+                {/* <i className="fab fa-watch-fitness text-gray-500"></i>
+                 */}
                 <DropdownMenuItem onClick={copyLink}>
                   <Link2 className="w-4 h-4 mr-2" />
+                  
                   Copy link
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={shareOnTwitter}>
                   <Twitter className="w-4 h-4 mr-2" />
                   Share on Twitter
                 </DropdownMenuItem>
+               
                 <DropdownMenuItem onClick={shareOnFacebook}>
                   <Facebook className="w-4 h-4 mr-2" />
                   Share on Facebook

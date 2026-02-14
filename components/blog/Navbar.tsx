@@ -5,7 +5,7 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -18,7 +18,7 @@ import { Search, PenSquare, BookOpen, Menu, Home } from "lucide-react";
 
 export default function NavBar(): React.JSX.Element {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  
+  const { theme,setTheme } = useTheme()
 
   // const { data: session } = authClient.useSession();
   // const user = session?.user;
@@ -46,6 +46,7 @@ export default function NavBar(): React.JSX.Element {
   // };
 
   const isAdmin = ""
+  
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
@@ -56,8 +57,9 @@ export default function NavBar(): React.JSX.Element {
             {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="w-5 h-5" />
+                <Button variant="ghost" size="icon" className="md:hidden ">
+                  <Menu className={`w-5 h-5 ${theme === 'dark' ? 'text-black' : 'text-black'}`} />
+                
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-64 bg-white">
@@ -104,17 +106,20 @@ export default function NavBar(): React.JSX.Element {
           {/* Right: Search */}
           <div className="flex items-center gap-3 flex-1 justify-end">
             {/* Search Bar */}
+        
             <div className="max-w-xs w-full hidden sm:block">
+              
               <div className="relative group">
-                <Search className="absolute dark:text-gray-600 left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-gray-600 transition-colors" />
+                <Search className="absolute  left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-gray-600 transition-colors" />
                 <Input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="pl-10 dark:bg-gray-50 border-gray-100 rounded-full h-10 dark:focus:bg-white focus:bg-white focus:ring-1 focus:ring-gray-200 transition-all"
+                  className="pl-10 dark:bg-white border-gray-100 rounded-full h-10 dark:focus:bg-white focus:bg-white focus:ring-1 focus:ring-gray-200 transition-all"
                 />
+                
               </div>
             </div>
 
