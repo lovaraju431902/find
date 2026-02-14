@@ -39,9 +39,9 @@ export default function PostCard({ post }: PostCardProps) {
 
   return (
     <article className="group py-6 border-b border-gray-100 last:border-0 hover:bg-white transition-colors">
-      <div className="flex justify-between items-start gap-8">
-        <div className="flex-1 min-w-0 flex flex-col h-full justify-between">
-          <div className="space-y-2">
+      <div className="flex p-3   justify-between items-start gap-8">
+        <div className="flex-1  min-w-0 flex flex-col h-full justify-between">
+          <div className="space-y-5 ">
             {/* Author Info */}
             <Link href={""} className="flex items-center gap-2 group/author">
               <Avatar className="h-5 w-5">
@@ -57,7 +57,7 @@ export default function PostCard({ post }: PostCardProps) {
 
             {/* Title + Subtitle */}
             <Link href={`/blog/${post.slug}`} className="block group/link">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 font-serif mb-1 leading-tight group-hover/link:text-gray-700 transition-colors">
+              <h2 className="text-xl sm:text-2xl font-bold pb-2 text-gray-900 font-serif mb-1 leading-tight group-hover/link:text-gray-700 transition-colors">
                 {post.title}
               </h2>
               {post.subtitle && (

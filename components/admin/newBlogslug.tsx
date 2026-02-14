@@ -1,6 +1,3 @@
-
-
-
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useQuery } from "@tanstack/react-query";
@@ -214,7 +211,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
         )}
 
         {/* Author Info */}
-        <div className="flex items-center justify-between py-6 border-b border-gray-100 mb-8">
+        <div className="flex items-center  justify-between py-6 border-b border-gray-100 mb-8">
           <div className="flex items-center gap-4">
             <Link href={``}>
               <Avatar className="h-12 w-12 ring-2 ring-gray-100">
@@ -253,7 +250,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           </div>
 
           {/* Share Actions */}
-          <div className="flex items-center  gap-2">
+          {/* <div className="flex items-center  gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-gray-500">
@@ -285,12 +282,52 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
             <Button variant="ghost" size="icon" className="text-gray-500">
               <MoreHorizontal className="w-5 h-5" />
             </Button>
+          </div> */}
+
+           {/* Share Actions */}
+          <div className="flex items-center gap-2 ">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-gray-500">
+                  <Share2 className="w-5 h-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className='bg-white font-sm cursor-pointer'>
+                <DropdownMenuItem onClick={copyLink}>
+                  <Link2 className="w-4 h-4 mr-2" />
+                  Copy link
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={shareOnTwitter}>
+                  <Twitter className="w-4 h-4 mr-2" />
+                  Share on Twitter
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={shareOnFacebook}>
+                  <Facebook className="w-4 h-4 mr-2" />
+                  Share on Facebook
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={shareOnLinkedIn}>
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  Share on LinkedIn
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="ghost" size="icon" className="text-gray-500">
+              <Bookmark className="w-5 h-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="text-gray-500">
+              <MoreHorizontal className="w-5 h-5" />
+            </Button>
           </div>
+        
+
+        
+        
+        
         </div>
 
         {/* Featured Image */}
         {post.featuredImage && (
-          <div className="aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-100">
+          <div className="aspect-[16/9] sm:aspect-[16/6] md:aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-100">
             <img
               src={post.featuredImage}
               alt={post.title}
@@ -299,7 +336,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           </div>
         )}
 
-        {/* Content */}
+        {/* Content
         <div
           className="prose prose-lg max-w-none mb-8 p-3"
           style={{
@@ -309,20 +346,25 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
           }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+     */}
 
-        <style>{`
+
+     <div
+          className="prose prose-lg max-w-none mb-8"
+          style={{
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "20px",
+            lineHeight: "1.8",
+          }}
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+
+          <style>{`
           .prose h1, .prose h2, .prose h3 {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 800;
-        
-        
-            }
-            .prose p{
-            font-size: 1.5rem;
-            line-height: 2;
-            font-family: "Roboto, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-           
-            }
+            font-weight: 700;
+          }
           .prose h1 { font-size: 32px; margin-bottom: 16px; }
           .prose h2 { font-size: 26px; margin-top: 32px; margin-bottom: 12px; }
           .prose h3 { font-size: 22px; margin-top: 24px; margin-bottom: 8px; }
@@ -359,6 +401,8 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
             margin-bottom: 8px;
           }
         `}</style>
+
+
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
