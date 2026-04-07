@@ -287,10 +287,10 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
 
            {/* Share Actions */}
 
-               <Button variant="default" onClick={() => setTheme("dark")} size="icon-lg">Black</Button>
+               {/* <Button variant="default" onClick={() => setTheme("dark")} size="icon-lg">Black</Button>
             
             <Button variant="default" onClick={() => setTheme("light")} size="icon-lg">White</Button>
-            
+             */}
             
           <div className="flex items-center gap-2 ">
             <DropdownMenu>

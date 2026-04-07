@@ -1,4 +1,5 @@
 import NewPostClient from '@/components/admin/newBlogslug'
+import { URL } from '@/lib/url';
 import { Metadata } from 'next';
 
 
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   // Fetch the post data server-side (same API as in your client component)
-  const baseUrl = "https://earningblgs.xyz";
+  const baseUrl = URL;
   const response = await fetch(`${baseUrl}/api/posts/${slug}`);
 
   if (!response.ok) {
