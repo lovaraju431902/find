@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    keywords: post.tags?.join(', ') || 'blog, articles, news',
+    keywords: post.tags?.length ? post.tags : ['blog', 'articles', 'news'],
     authors: [{ name: post.authorName }],
     openGraph: {
       title: post.title,
@@ -69,6 +69,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.published_date || post.created_date,
       modifiedTime: post.created_date,
       authors: [post.authorName],
+      tags: post.tags || [],
     },
     twitter: {
       card: 'summary_large_image',
