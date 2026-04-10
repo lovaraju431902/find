@@ -31,7 +31,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from 'next-themes';
 import { URL } from '@/lib/url';
 
 
@@ -63,7 +62,6 @@ export interface Post {
 }
 
 export default function NewPostClient({ slug }: { slug: string }): React.JSX.Element {
-    const { setTheme } = useTheme()
   const [user, setUser] = useState<User | null>(null);
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const { data: post, isLoading } = useQuery<Post>({
@@ -299,7 +297,7 @@ export default function NewPostClient({ slug }: { slug: string }): React.JSX.Ele
                   <Share2 className="w-5 h-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className='dark:bg-white text-black bg-white font-sm cursor-pointer'>
+              <DropdownMenuContent align="end" className='bg-white text-black font-sm cursor-pointer'>
                 {/* <i className="fab fa-watch-fitness text-gray-500"></i>
                  */}
                 <DropdownMenuItem onClick={copyLink}>

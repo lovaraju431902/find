@@ -7,21 +7,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AdminPostsList from "@/components/admin/AdminPostsList";
 import AdminStatsList from "@/components/admin/AdminStatsList";
 import AdminUsersList from "@/components/admin/AdminUsersList";
-import { LayoutDashboard, FileText, Users,  } from "lucide-react";
+import { LayoutDashboard, FileText, Users, } from "lucide-react";
 import { motion } from "framer-motion";
+import { SimpleEditor } from "../tiptap-templates/simple/simple-editor";
 
 
 
 
 export default function AdminDashboard(): React.JSX.Element {
-  
-   const [open,setOpen]=React.useState<boolean>(false)
-     
 
-if(open){
-  return <>
-  <PostForm/></>
-}
+  const [open, setOpen] = React.useState<boolean>(false)
+
+
+  if (open) {
+    return (
+      <PostForm />
+    );
+  }
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -35,12 +37,12 @@ if(open){
               <p className="text-gray-600">Manage your blog content and users</p>
             </div>
             <Button
-              onClick={() =>{setOpen(true)}}
+              onClick={() => { setOpen(true) }}
               className="bg-emerald-600 hover:bg-emerald-700"
             >
               <FileText className="w-4 h-4 mr-2" />
               New Post
-           
+
             </Button>
           </div>
 

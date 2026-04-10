@@ -14,6 +14,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { X, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { SimpleEditor } from '../tiptap-templates/simple/simple-editor';
 
 export default function EditPostForm({slug}:{slug:string}) {
   const router = useRouter();
@@ -211,17 +212,16 @@ export default function EditPostForm({slug}:{slug:string}) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Content (HTML) *
+            Content *
           </label>
-          <Textarea
-            placeholder="<h2>Your Title</h2><p>Your content here...</p>"
-            className="min-h-50 font-mono text-sm"
-            value={formData.content}
-            onChange={(e) => handleInputChange('content', e.target.value)}
-            required
-          />
-          <p className="text-sm text-gray-500 mt-1">
-            Enter HTML content for the post body
+          <div className="border border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden min-h-[500px] px-6 py-4 focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-emerald-500 transition-all">
+            <SimpleEditor
+              value={formData.content}
+              onChange={(value) => handleInputChange('content', value)}
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-2">
+            Format your blog post content using the rich text editor
           </p>
         </div>
 

@@ -5,7 +5,6 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -18,7 +17,6 @@ import { Search, PenSquare, BookOpen, Menu, Home } from "lucide-react";
 
 export default function NavBar(): React.JSX.Element {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const { theme,setTheme } = useTheme()
 
   // const { data: session } = authClient.useSession();
   // const user = session?.user;
@@ -58,7 +56,7 @@ export default function NavBar(): React.JSX.Element {
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden ">
-                  <Menu className={`w-5 h-5 ${theme === 'dark' ? 'text-black' : 'text-black'}`} />
+                  <Menu className="w-5 h-5 text-black" />
                 
                 </Button>
               </SheetTrigger>
@@ -117,7 +115,7 @@ export default function NavBar(): React.JSX.Element {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="pl-10 dark:bg-white border-gray-100 rounded-full h-10 dark:focus:bg-white focus:bg-white focus:ring-1 focus:ring-gray-200 transition-all"
+                  className="pl-10 border-gray-100 rounded-full h-10 transition-all bg-white"
                 />
                 
               </div>

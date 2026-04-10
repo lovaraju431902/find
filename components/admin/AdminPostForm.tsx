@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { X } from 'lucide-react';
+import { SimpleEditor } from '../tiptap-templates/simple/simple-editor';
 
 export default function PostForm() {
   const [title, setTitle] = useState('');
@@ -129,15 +130,14 @@ export default function PostForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Content (HTML) *</label>
-          <Textarea 
-            placeholder="<h2>Your Title</h2><p>Your content here...</p>" 
-            className="min-h-50 font-mono text-sm"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          />
-          <p className="text-sm text-gray-500 mt-1">Enter HTML content for the post body</p>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Content *</label>
+          <div className="border border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden min-h-[500px] px-6 py-4 focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-emerald-500 transition-all">
+            <SimpleEditor 
+              value={content}
+              onChange={setContent}
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-2">Format your blog post content using the rich text editor</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
