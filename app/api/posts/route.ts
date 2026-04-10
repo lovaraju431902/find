@@ -2,9 +2,7 @@ import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-
-
-
+export const dynamic = 'force-dynamic';
 const postSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   subtitle: z.string().optional(),
@@ -99,7 +97,10 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error fetching posts:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch posts' },
+      { 
+        error: 'Failed to fetch posts', 
+        details: error instanceof Error ? error.message : String(error) 
+      },
       { status: 500 }
     );
   }

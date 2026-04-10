@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { z } from 'zod';
 
+export const dynamic = 'force-dynamic';
+
 const postUpdateSchema = z.object({
   title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
   subtitle: z.string().max(300, 'Subtitle too long').optional(),
@@ -59,7 +61,11 @@ export async function GET(
   } catch (error) {
     console.error('Error fetching post:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch post', id: slug || "undefined"},
+      { 
+        error: 'Failed to fetch post', 
+        id: slug || "undefined",
+        details: error instanceof Error ? error.message : String(error) 
+      },
       { status: 500 }
     );
   }
